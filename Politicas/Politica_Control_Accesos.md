@@ -4,19 +4,27 @@
 ---
 
 **Código:** PSI-002  
-**Versión:** 1.0  
+**Versión:** 1.1  
 **Fecha de aprobación:** 15 de noviembre de 2025  
+**Fecha de última actualización:** 2 de junio de 2026  
 **Aprobado por:** Comité de Seguridad de la Información  
 **Propietario:** CISO  
 **Clasificación:** CONFIDENCIAL - USO INTERNO
 
 ---
 
+## CONTROL DE CAMBIOS
+
+| Versión | Fecha | Descripción del Cambio |
+|---------|-------|------------------------|
+| 1.0 | 15/11/2025 | Versión inicial aprobada |
+| 1.1 | 02/06/2026 | Incorporación de: gestión de secretos y API keys, procedimiento ante compromiso de credenciales, matriz de accesos por clasificación de activo, ciclo de vida de cuentas de servicio, procedimiento diferenciado para médicos externos, KPIs de cumplimiento, integración con gestión de incidentes y aplicación concreta Ley 19.628 |
+
+---
+
 ## 1. PROPÓSITO
 
-Establecer los criterios y procedimientos para gestionar los accesos a los sistemas de información, aplicaciones y datos de Stamford Health and Solution SpA, garantizando que solo personas autorizadas accedan a los recursos necesarios para desempeñar sus funciones, protegin
-
-do la confidencialidad, integridad y disponibilidad de la información.
+Establecer los criterios y procedimientos para gestionar los accesos a los sistemas de información, aplicaciones y datos de Stamford Health and Solution SpA, garantizando que solo personas autorizadas accedan a los recursos necesarios para desempeñar sus funciones, protegiendo la confidencialidad, integridad y disponibilidad de la información.
 
 ---
 
@@ -48,6 +56,21 @@ Las funciones críticas serán distribuidas entre diferentes usuarios para evita
 ### 3.4. Revisión Periódica
 Los accesos serán revisados trimestralmente para asegurar que permanezcan apropiados y vigentes.
 
+### 3.5. Proporcionalidad al Riesgo
+Los controles de acceso serán proporcionales al valor, sensibilidad y criticidad del activo protegido, de acuerdo a la clasificación definida en la sección 3.6.
+
+### 3.6. Matriz de Clasificación de Accesos
+
+Los sistemas se clasifican en tres niveles de criticidad que determinan los controles mínimos obligatorios:
+
+| Nivel | Clasificación | Sistemas | Controles Mínimos |
+|-------|--------------|----------|-------------------|
+| **Nivel 3 — Crítico** | Datos clínicos, datos personales sensibles | HCE, bases de datos de pacientes, AWS (producción) | MFA obligatorio, acceso privilegiado con ticket, logs 7 años, revisión mensual |
+| **Nivel 2 — Restringido** | Información corporativa confidencial | TechHealth Platform, Microsoft 365, VPN, servidores internos | MFA obligatorio, logs 3 años, revisión trimestral |
+| **Nivel 1 — Interno** | Información operacional general | Portal web, correo corporativo, herramientas colaborativas | Contraseña fuerte, logs 1 año, revisión trimestral |
+
+Todo acceso a sistemas Nivel 3 requiere base legal válida bajo la Ley 19.628 y la Ley 20.584 (ver sección 17).
+
 ---
 
 ## 4. GESTIÓN DE IDENTIDADES
@@ -58,7 +81,7 @@ Los accesos serán revisados trimestralmente para asegurar que permanezcan aprop
 
 **Procedimiento:**
 1. RRHH notifica incorporación de nuevo usuario (Formulario FORM-001)
-2. Jefe directo define perfil de acceso requerido
+2. Jefe directo define perfil de acceso requerido según rol y nivel de clasificación del sistema
 3. Propietario del activo aprueba solicitud
 4. Administrador crea cuenta con perfil aprobado
 5. Usuario recibe credenciales temporales
@@ -72,17 +95,20 @@ Los accesos serán revisados trimestralmente para asegurar que permanezcan aprop
 ### 4.2. Proceso de Modificación de Accesos
 
 **Cuándo aplicar:**
-- Cambio de rol o posición
+- Cambio de rol, posición o departamento
 - Cambio de responsabilidades
 - Necesidad de acceso adicional temporal
 - Retiro de accesos ya no necesarios
 
+**Principio de revocación por cambio de departamento:** Cuando un usuario cambia de área, todos los accesos del área anterior son revocados automáticamente al momento de la transferencia, sin necesidad de solicitud adicional. El nuevo jefe directo solicita los accesos del nuevo rol mediante FORM-001.
+
 **Procedimiento:**
-1. Usuario o jefe directo solicita modificación
-2. Propietario del activo aprueba
-3. Administrador ejecuta cambio
-4. Usuario es notificado
-5. Modificación es registrada en log de auditoría
+1. RRHH o jefe directo notifica cambio (Formulario FORM-001)
+2. Propietario del activo del área de origen revoca accesos anteriores
+3. Propietario del activo del área de destino aprueba nuevos accesos
+4. Administrador ejecuta los cambios en un solo ciclo
+5. Usuario es notificado de los accesos revocados y otorgados
+6. Modificación es registrada en log de auditoría
 
 **Plazo:** 24 horas (cambios urgentes), 72 horas (cambios rutinarios)
 
@@ -102,6 +128,54 @@ Los accesos serán revisados trimestralmente para asegurar que permanezcan aprop
 6. Firma de acta de devolución de activos
 
 **Plazo crítico:** Desactivación en 4 horas (empleados) o inmediato (casos disciplinarios)
+
+### 4.4. Ciclo de Vida de Cuentas de Servicio
+
+Las cuentas de servicio (formato `svc-nombreservicio`) requieren controles específicos dado que no corresponden a un usuario humano:
+
+**Creación:**
+- Requiere aprobación del CISO
+- Debe tener un propietario responsable identificado (persona natural)
+- El propietario es responsable de la actividad de la cuenta de servicio
+- Documentada en el Registro de Cuentas de Servicio (FORM-005)
+
+**Controles:**
+- Permisos mínimos estrictamente necesarios para la función automatizada
+- Contraseñas o tokens gestionados exclusivamente en la bóveda corporativa
+- Rotación de credenciales cada 90 días como mínimo (o al cambio de propietario)
+- Las cuentas de servicio no tienen acceso interactivo habilitado (login deshabilitado)
+- No se aplican a las reglas de inactividad de 60 días (ver sección 9.2)
+
+**Revisión:**
+- Revisión anual por el propietario responsable, con revalidación ante el CISO
+- Al término de la integración o servicio: eliminación inmediata de la cuenta y sus credenciales
+
+### 4.5. Proceso de Alta de Profesionales Médicos Externos
+
+Los 250 profesionales médicos asociados tienen un procedimiento diferenciado debido a su naturaleza de usuarios externos con acceso a datos clínicos de Nivel 3.
+
+**Responsable de aprobación:** Jefe de Área Clínica correspondiente + CISO
+
+**Procedimiento:**
+1. Jefe de Área Clínica solicita el alta mediante FORM-006 (Formulario de Acceso Médico Externo)
+2. RRHH verifica vigencia del contrato o convenio con el profesional
+3. CISO aprueba el perfil de acceso (restringido al Portal Médico APP-004 y HCE de sus pacientes)
+4. Administrador crea cuenta con formato `med.nombre.apellido`
+5. Profesional recibe credenciales temporales y completa capacitación de 30 minutos sobre manejo de datos clínicos y Ley 20.584
+6. Profesional activa MFA antes del primer acceso a HCE
+
+**Restricciones aplicables a médicos externos:**
+- Acceso exclusivamente vía Portal Médico (APP-004) con MFA
+- Acceso restringido a los registros clínicos de sus propios pacientes atendidos en Stamford Health
+- Acceso desde dispositivos personales: solo vía Portal Médico con MFA (PROHIBIDO acceso directo a HCE)
+- Sesiones limitadas a 8 horas continuas
+
+**Médicos que rotan entre centros o especialidades:**
+- El Jefe de Área Clínica de origen revoca el acceso al área anterior
+- El Jefe de Área Clínica de destino solicita el nuevo perfil mediante FORM-006
+- Plazo de actualización: 24 horas
+
+**Vigencia:** El acceso tiene vigencia igual a la del contrato o convenio. RRHH notifica al Administrador con 5 días de anticipación al vencimiento para desactivación.
 
 ---
 
@@ -224,6 +298,33 @@ Son usuarios privilegiados aquellos con:
 - Complejidad aumentada: Mínimo 16 caracteres
 - Uso de bóveda de contraseñas (Password Vault) obligatorio
 
+### 6.3. Gestión de Secretos, API Keys y Tokens de Integración
+
+Los secretos de aplicación son credenciales no humanas que otorgan acceso programático a sistemas y deben recibir el mismo nivel de protección que las contraseñas privilegiadas.
+
+**Tipos de secretos bajo esta política:**
+- AWS IAM Access Keys y Secret Access Keys
+- Tokens de integración entre sistemas (TechHealth ↔ HCE, TechHealth ↔ AWS)
+- Certificados digitales TLS/SSL y claves privadas asociadas
+- Claves de API de servicios de terceros (Microsoft, proveedores externos)
+- Secrets de bases de datos usados por aplicaciones
+
+**Controles obligatorios:**
+- Todo secreto debe estar registrado en la bóveda corporativa (Password Vault) con su propietario responsable, sistema al que otorga acceso y fecha de expiración
+- **PROHIBIDO** almacenar secretos en código fuente, repositorios git, archivos de configuración sin cifrar o mensajería
+- Las AWS IAM Access Keys de larga duración están **PROHIBIDAS**; se utilizarán IAM Roles con credenciales temporales (STS AssumeRole) para todos los servicios
+- Rotación de secretos: cada 90 días o inmediatamente ante sospecha de compromiso
+
+**Certificados digitales:**
+- Inventario de certificados mantenido por el Administrador de Sistemas
+- Renovación gestionada con 30 días de anticipación al vencimiento
+- Claves privadas almacenadas en AWS KMS o bóveda corporativa; nunca en texto plano
+
+**Al término de una integración o servicio:**
+- Revocación inmediata del secreto o API key
+- Eliminación del registro en la bóveda
+- Rotación de credenciales en todos los sistemas que pudieran haber tenido exposición
+
 ---
 
 ## 7. CONTROL DE ACCESO FÍSICO
@@ -334,7 +435,7 @@ Son usuarios privilegiados aquellos con:
 - Día 90: Eliminación de cuenta (con backup de datos del usuario)
 
 **Excepciones:**
-- Cuentas de servicio (revisión anual)
+- Cuentas de servicio (revisión anual, ver sección 4.4)
 - Usuarios con licencia médica o vacaciones prolongadas (notificación previa a RRHH)
 
 ### 9.3. Auditoría de Accesos Privilegiados
@@ -360,6 +461,7 @@ Son usuarios privilegiados aquellos con:
 - Acceso simultáneo desde ubicaciones geográficamente distantes
 - Escalamiento de privilegios
 - Acceso a sistemas desde ubicaciones no autorizadas
+- Uso de secretos o API keys fuera del sistema registrado como propietario
 
 **Revisión Diaria:**
 - Accesos exitosos con cuentas privilegiadas
@@ -382,11 +484,68 @@ Son usuarios privilegiados aquellos con:
 - Respaldo diario de logs
 - Logs de seguridad cifrados
 
+### 10.3. Integración con Gestión de Incidentes
+
+Cuando el monitoreo detecta un evento de seguridad relacionado con accesos, se activa el procedimiento de gestión de incidentes definido en **PROC-005: Procedimiento de Respuesta a Incidentes de Seguridad**.
+
+**Clasificación de eventos y escalamiento:**
+
+| Tipo de Evento | Clasificación | Acción Inmediata |
+|---------------|---------------|------------------|
+| Acceso no autorizado confirmado a HCE | Crítico | Desactivación de cuenta + activación PROC-005 en ≤15 min |
+| Escalamiento de privilegios no autorizado | Alto | Alerta al CISO + investigación en ≤1 hora |
+| Múltiples intentos fallidos de login | Medio | Bloqueo automático + notificación al Coordinador de Seguridad |
+| Acceso fuera de horario (cuentas estándar) | Bajo | Registro y revisión al día siguiente |
+
+**Responsable de escalamiento:** Coordinador de Seguridad activa PROC-005; en su ausencia, el CISO.
+
 ---
 
-## 11. CASOS ESPECIALES
+## 11. RESPUESTA ANTE COMPROMISO DE CREDENCIALES
 
-### 11.1. Acceso de Emergencia
+### 11.1. Detección y Reporte
+
+**El usuario debe reportar inmediatamente** si sospecha que sus credenciales han sido comprometidas. El reporte se realiza:
+- En horario laboral: al Coordinador de Seguridad en persona o al correo `seguridad@stamfordhealth.cl`
+- Fuera de horario: al número de guardia de seguridad TI (ext. 911 interna o celular de guardia publicado en la intranet)
+
+**Indicadores de compromiso a reportar:**
+- Inicio de sesión exitoso desde ubicación o dispositivo desconocido
+- Notificación de cambio de contraseña no solicitado
+- Actividad en sistemas en horario en que el usuario no estaba conectado
+- Solicitud de MFA no iniciada por el usuario
+
+### 11.2. Procedimiento de Respuesta
+
+1. **Contención inmediata (0–15 minutos):**
+   - Coordinador de Seguridad invalida todas las sesiones activas del usuario afectado
+   - Fuerza cambio de contraseña en el próximo inicio de sesión
+   - Revoca temporalmente tokens MFA registrados y solicita re-enrolamiento
+   - Si el compromiso involucra una cuenta privilegiada: desactivación inmediata hasta investigación completada
+
+2. **Investigación inicial (15 min – 4 horas):**
+   - Revisión de logs de los últimos 30 días de la cuenta afectada
+   - Identificación del vector de compromiso (phishing, reutilización de contraseña, malware)
+   - Determinación del alcance: qué sistemas fueron accedidos con las credenciales comprometidas
+
+3. **Recuperación (4–24 horas):**
+   - Restablecimiento de accesos con nuevas credenciales
+   - Re-enrolamiento MFA verificado en persona o por videoconferencia
+   - Revisión de cambios realizados con la cuenta comprometida durante el período de exposición
+
+4. **Notificación regulatoria:**
+   - Si el compromiso afectó datos personales (Ley 19.628) o datos clínicos (Ley 20.584): el CISO evalúa en ≤24 horas si corresponde notificación a la autoridad competente
+   - Notificación a pacientes afectados según lo exija la normativa aplicable
+
+5. **Documentación:**
+   - Registro del incidente en el sistema de gestión de incidentes
+   - Informe post-incidente al Comité de Seguridad en ≤72 horas
+
+---
+
+## 12. CASOS ESPECIALES
+
+### 12.1. Acceso de Emergencia
 
 **Situación:** Incidente crítico que requiere acceso inmediato fuera del procedimiento normal
 
@@ -402,7 +561,7 @@ Son usuarios privilegiados aquellos con:
 - Apertura del sobre requiere 2 testigos
 - Contraseña se cambia después de cada uso
 
-### 11.2. Acceso de Terceros (Proveedores)
+### 12.2. Acceso de Terceros (Proveedores)
 
 **Tipos de Acceso:**
 - **Presencial:** Proveedor en sitio con escolta
@@ -421,7 +580,7 @@ Son usuarios privilegiados aquellos con:
 - Microsoft: Acceso con cuenta corporativa
 - Proveedores de mantenimiento: Solo acceso presencial con escolta
 
-### 11.3. Acceso de Auditores
+### 12.3. Acceso de Auditores
 
 **Auditorías Internas:**
 - Acceso de solo lectura a sistemas y logs
@@ -435,45 +594,47 @@ Son usuarios privilegiados aquellos con:
 
 ---
 
-## 12. RESPONSABILIDADES
+## 13. RESPONSABILIDADES
 
-### 12.1. Usuarios
+### 13.1. Usuarios
 
 - Proteger sus credenciales de acceso
 - No compartir cuentas bajo ninguna circunstancia
-- Reportar inmediatamente sospechas de compromiso de cuenta
+- Reportar inmediatamente sospechas de compromiso de cuenta al Coordinador de Seguridad (ver sección 11)
 - Cerrar sesión al ausentarse del equipo
 - Cumplir con política de contraseñas
 
-### 12.2. Jefes Directos
+### 13.2. Jefes Directos
 
 - Solicitar accesos apropiados para su equipo
-- Notificar cambios en roles o responsabilidades
+- Notificar cambios en roles, responsabilidades o departamento
 - Notificar inmediatamente término de relación laboral
 
-### 12.3. Propietarios de Activos
+### 13.3. Propietarios de Activos
 
 - Aprobar o rechazar solicitudes de acceso
 - Revisar y certificar accesos trimestralmente
-- Definir niveles de acceso apropiados
+- Definir niveles de acceso apropiados según clasificación del activo
 
-### 12.4. Administradores de Sistemas
+### 13.4. Administradores de Sistemas
 
 - Implementar solicitudes de acceso aprobadas en plazo
 - Desactivar cuentas según procedimiento
 - Mantener logs de auditoría
 - Generar reportes de acceso para revisiones
+- Mantener el inventario de cuentas de servicio y secretos en la bóveda corporativa
 
-### 12.5. CISO
+### 13.5. CISO
 
-- Aprobar accesos privilegiados
+- Aprobar accesos privilegiados y de médicos externos
 - Supervisar cumplimiento de esta política
 - Revisar logs de auditoría
 - Investigar violaciones a la política
+- Evaluar notificaciones regulatorias ante compromiso de datos
 
 ---
 
-## 13. SANCIONES
+## 14. SANCIONES
 
 Las violaciones a esta política pueden resultar en:
 
@@ -485,12 +646,13 @@ Las violaciones a esta política pueden resultar en:
 - Compartir contraseña (reincidencia): Suspensión temporal
 - Acceso no autorizado intencional: Suspensión o terminación de contrato
 - Uso indebido de accesos privilegiados: Terminación de contrato + acciones legales
+- Almacenamiento de secretos o API keys fuera de la bóveda corporativa (reincidencia): Suspensión temporal
 
 **Todas las violaciones son reportadas al Comité de Seguridad.**
 
 ---
 
-## 14. EXCEPCIONES
+## 15. EXCEPCIONES
 
 Excepciones a esta política deben:
 - Ser solicitadas por escrito al CISO
@@ -502,24 +664,67 @@ Excepciones a esta política deben:
 
 ---
 
-## 15. DOCUMENTOS RELACIONADOS
+## 16. INDICADORES DE CUMPLIMIENTO (KPIs)
 
-- PSI-001: Política de Seguridad de la Información (principal)
-- PROC-003: Procedimiento de Gestión de Accesos
-- FORM-001: Formulario de Solicitud de Acceso
-- FORM-002: Formulario de Revisión de Accesos
+El Coordinador de Seguridad medirá mensualmente los siguientes indicadores y los presentará trimestralmente al Comité de Seguridad:
+
+| Indicador | Fórmula | Meta |
+|-----------|---------|------|
+| Tasa de certificación trimestral | Accesos certificados / Total accesos revisados × 100 | ≥ 95% |
+| Tiempo promedio de desactivación en baja | Promedio de horas entre notificación RRHH y desactivación de cuenta | ≤ 4 horas |
+| Cuentas inactivas detectadas | N° de cuentas desactivadas por inactividad en el período | Tendencia decreciente |
+| Cobertura de bóveda de contraseñas | Usuarios privilegiados con bóveda activa / Total usuarios privilegiados × 100 | 100% |
+| Secretos sin propietario registrado | N° de API keys o secretos sin propietario en la bóveda | 0 |
+| Cobertura MFA en sistemas Nivel 3 | Usuarios con MFA activo en HCE / Total usuarios HCE × 100 | 100% (desde Q1 2026) |
+| Accesos privilegiados no utilizados en 30 días | N° de cuentas privilegiadas sin uso en el último mes | 0 |
+| Tiempo de respuesta ante compromiso de credenciales | Tiempo desde reporte hasta contención (sesión invalidada) | ≤ 15 minutos |
+
+Los KPIs son insumo para la revisión de eficacia del SGSI según ISO/IEC 27001 Cláusula 9.1.
 
 ---
 
-## 16. REFERENCIAS NORMATIVAS
+## 17. CUMPLIMIENTO NORMATIVO
+
+### 17.1. Ley 19.628 — Protección de Datos Personales
+
+El acceso a datos personales almacenados en los sistemas de Stamford Health requiere base legal válida. En el contexto de esta política:
+
+- **Empleados:** el acceso a datos personales de pacientes está justificado por la relación contractual laboral y las funciones expresamente asignadas; no se requiere consentimiento adicional, pero el acceso debe limitarse al mínimo necesario para la función.
+- **Médicos externos:** el acceso a datos clínicos de pacientes que no son suyos está **PROHIBIDO**. El acceso a datos de sus propios pacientes está justificado por la relación médico-paciente y el consentimiento de atención.
+- **Terceros y proveedores:** solo acceden a datos personales en el marco de un contrato que incluya cláusulas de tratamiento de datos y confidencialidad, y únicamente en el alcance mínimo necesario para el servicio.
+- Cualquier exportación o transferencia de datos personales a sistemas externos requiere evaluación legal previa y aprobación del CISO.
+
+### 17.2. Ley 20.584 — Derechos y Deberes de los Pacientes
+
+- Los registros clínicos electrónicos (HCE) tienen carácter reservado conforme al Artículo 12 de la Ley 20.584.
+- El acceso a HCE está restringido al equipo de salud tratante y al personal administrativo con función explícita que lo justifique.
+- Los logs de acceso a HCE se conservan durante 7 años (ver sección 10.2).
+- Cualquier acceso a HCE por parte de personas distintas al equipo tratante requiere autorización escrita del paciente o mandato judicial.
+
+---
+
+## 18. DOCUMENTOS RELACIONADOS
+
+- PSI-001: Política de Seguridad de la Información (principal)
+- PROC-003: Procedimiento de Gestión de Accesos
+- PROC-005: Procedimiento de Respuesta a Incidentes de Seguridad
+- FORM-001: Formulario de Solicitud de Acceso
+- FORM-002: Formulario de Revisión de Accesos
+- FORM-005: Formulario de Registro de Cuentas de Servicio
+- FORM-006: Formulario de Acceso Médico Externo
+
+---
+
+## 19. REFERENCIAS NORMATIVAS
 
 - ISO/IEC 27002:2022 - Controles 5.15, 5.16, 5.17, 5.18, 8.2, 8.3, 8.5
-- Ley 19.628 - Artículos sobre acceso a datos personales
+- ISO/IEC 27001:2022 - Cláusula 9.1 (Seguimiento, medición, análisis y evaluación)
+- Ley 19.628 - Protección de la vida privada y datos personales
 - Ley 20.584 - Artículo 12 (reserva de información clínica)
 
 ---
 
-## 17. REVISIÓN
+## 20. REVISIÓN
 
 Esta política será revisada anualmente o cuando cambien las circunstancias tecnológicas u organizacionales.
 
@@ -530,7 +735,8 @@ Esta política será revisada anualmente o cuando cambien las circunstancias tec
 **Aprobado por:**
 
 **Firma:** ___________________________  
-**Nombre:** [CISO]  
+**Nombre:** Rodrigo Vásquez Herrera  
+**Cargo:** Chief Information Security Officer (CISO)  
 **Fecha:** 15 de noviembre de 2025
 
 ---
