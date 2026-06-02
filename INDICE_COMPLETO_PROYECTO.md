@@ -104,14 +104,14 @@
 
 ### Políticas Completas en Markdown
 
-**1. [Politica_Seguridad_Informacion_Principal.md](computer:///mnt/user-data/outputs/Politica_Seguridad_Informacion_Principal.md)** (21KB, 23 páginas)
+**1. [Politica_Seguridad_Informacion_Principal.md](Politicas/Politica_Seguridad_Informacion_Principal.md)** (21KB, 23 páginas)
 - PSI-001 - Documento rector del SGSI
 - Versión 1.0, aprobada 15/11/2025
 - 23 secciones completas
 - Compromiso formal dirección
 - Inversión: $50-75M CLP año 1
 
-**2. [Estructura_Organizativa_SGSI.md](computer:///mnt/user-data/outputs/Estructura_Organizativa_SGSI.md)** (26KB, 20 páginas)
+**2. [Estructura_Organizativa_SGSI.md](Estructura_Organizativa_SGSI.md)** (26KB, 20 páginas)
 - ORG-001
 - Comité de Seguridad (9 miembros + secretario)
 - Organigrama completo
@@ -120,16 +120,18 @@
 - Programa de capacitación por rol
 - Matriz de autoridades
 
-**3. [Politica_Control_Accesos.md](computer:///mnt/user-data/outputs/Politica_Control_Accesos.md)** (17KB, 17 páginas)
-- PSI-002
-- 4 Principios fundamentales
-- Gestión ciclo vida identidades
-- Política contraseñas (12+ chars, MFA)
-- Gestión accesos privilegiados (10 usuarios)
-- Revisión trimestral
+**3. [Politica_Control_Accesos.md](Politicas/Politica_Control_Accesos.md)** — PSI-002 v1.1 (actualizada 02/06/2026)
+- Versión 1.1 con 20 secciones
+- Matriz de clasificación de accesos (Niveles 1–3)
+- Ciclo de vida de cuentas de servicio
+- Procedimiento diferenciado para médicos externos
+- Gestión de secretos, API keys y certificados
+- Procedimiento de respuesta ante compromiso de credenciales
+- 8 KPIs de cumplimiento (ISO 27001 Cláusula 9.1)
+- Aplicación concreta de Ley 19.628 y Ley 20.584
 - Controles ISO: 5.15, 5.16, 5.17, 5.18, 8.2, 8.3, 8.5
 
-**4. [Politica_Uso_Aceptable.md](computer:///mnt/user-data/outputs/Politica_Uso_Aceptable.md)** (7.7KB, 8 páginas)
+**4. [Politica_Uso_Aceptable.md](Politicas/Politica_Uso_Aceptable.md)** (7.7KB, 8 páginas)
 - PSI-003
 - Uso autorizado vs prohibido
 - Equipos corporativos, email, internet
@@ -138,7 +140,7 @@
 - Sanciones graduales
 - Controles ISO: 5.10, 5.19, 5.20, 8.23
 
-**5. [Politicas_Restantes_y_Mapeo.md](computer:///mnt/user-data/outputs/Politicas_Restantes_y_Mapeo.md)** (22KB, 25 páginas)
+**5. [Politicas_Restantes_y_Mapeo.md](Politicas/Politicas_Restantes_y_Mapeo.md)** (22KB, 25 páginas)
 - **PSI-004:** Gestión de Incidentes (5 páginas)
   - Clasificación 4 niveles
   - Proceso IRP 5 fases
@@ -166,6 +168,17 @@
   - 60 pendientes (65%)
   - Nivel actual: 35%
   - Objetivo Q2 2026: 90%
+
+### Formularios
+
+**[FORM-001](Formularios/FORM-001_Solicitud_Acceso.md)** — Formulario de Solicitud de Acceso (alta, modificación, temporal)  
+**[FORM-002](Formularios/FORM-002_Revision_Accesos.md)** — Formulario de Revisión y Certificación Trimestral de Accesos  
+**[FORM-005](Formularios/FORM-005_Registro_Cuentas_Servicio.md)** — Formulario de Registro de Cuentas de Servicio  
+**[FORM-006](Formularios/FORM-006_Acceso_Medico_Externo.md)** — Formulario de Solicitud de Acceso para Profesional Médico Externo
+
+### Procedimientos
+
+**[PROC-005](Procedimientos/PROC-005_Respuesta_Incidentes_Seguridad.md)** — Procedimiento de Respuesta a Incidentes de Seguridad (6 fases operacionales)
 
 ### Documento de Resumen Ejecutivo
 
