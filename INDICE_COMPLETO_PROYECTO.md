@@ -14,12 +14,12 @@
 
 ## ✅ ESTADO DEL PROYECTO
 
-| Fase | Estado | Páginas | Archivos |
-|------|--------|---------|----------|
-| **Semana 1:** Diagnóstico | ✅ COMPLETO | 18 | 7 archivos |
-| **Semana 2:** Diseño SGSI | ✅ COMPLETO | ~30 | 8 archivos |
-| **Semana 3:** Implementación | ⏳ PENDIENTE | - | - |
-| **Semana 4:** Auditoría | ⏳ PENDIENTE | - | - |
+| Fase | Estado | Documentos |
+|------|--------|------------|
+| **Semana 1:** Diagnóstico | ✅ COMPLETO | Informe diagnóstico, Inventario 487 activos, Matriz 20 riesgos |
+| **Semana 2:** Diseño SGSI | ✅ COMPLETO | 6 políticas, 2 procedimientos, 6 formularios, estructura organizativa |
+| **Semana 3:** Implementación | ⏳ PENDIENTE | — |
+| **Semana 4:** Auditoría | ⏳ PENDIENTE | — |
 
 ---
 
