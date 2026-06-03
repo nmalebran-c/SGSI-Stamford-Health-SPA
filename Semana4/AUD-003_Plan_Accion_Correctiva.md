@@ -54,6 +54,7 @@ Para cada no conformidad se aplica:
 | **Responsable** | Coordinador de Seguridad |
 | **Plazo** | 20/11/2026 |
 | **Verificación de eficacia** | SoA revisada por consultor externo; confirmada como conforme a ISO 27001 §6.1.3 |
+| **Evidencia** | Documento **SOA-001 — Declaración de Aplicabilidad** (`Declaracion_Aplicabilidad_SoA.md`), 93 controles del Anexo A |
 | **Estado** | ✅ Cerrada — 18/11/2026; SoA v1.0 aprobada |
 
 ### 🟡 NC-m-02 — Capacitación de médicos externos
