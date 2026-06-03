@@ -18,8 +18,8 @@
 |------|--------|-------------|
 | **Semana 1:** Diagnóstico | ✅ Completo | Informe diagnóstico, Inventario 487 activos, Matriz 20 riesgos |
 | **Semana 2:** Diseño SGSI | ✅ Completo | 9 políticas, 3 procedimientos, 7 formularios, estructura organizativa, mapeo ISO |
-| **Semana 3:** Implementación | ⏳ Pendiente | — |
-| **Semana 4:** Auditoría | ⏳ Pendiente | — |
+| **Semana 3:** Implementación | ✅ Completo | Plan de implementación, registro de controles, plan y registro de capacitación |
+| **Semana 4:** Auditoría | ✅ Completo | Plan y informe de auditoría interna, acción correctiva, revisión por la dirección, certificación |
 
 ---
 
@@ -160,21 +160,47 @@
 - [x] Plan de implementación Q1–Q4 2026
 
 ### Semana 3 — Implementación
-- [ ] Plan de implementación detallado con hitos
-- [ ] Registro de implementación de controles
-- [ ] Plan de capacitación formal
-- [ ] Registro de capacitaciones ejecutadas
+- [x] Plan de implementación detallado con hitos (IMPL-001)
+- [x] Registro de implementación de controles (IMPL-002)
+- [x] Plan de capacitación formal (IMPL-003)
+- [x] Registro de capacitaciones ejecutadas (IMPL-004)
+- [x] Resumen ejecutivo de la fase (IMPL-000)
 
 ### Semana 4 — Auditoría
-- [ ] Plan de auditoría interna
-- [ ] Informe de auditoría interna
-- [ ] Plan de acción correctiva
-- [ ] Informe de revisión por la dirección
+- [x] Plan de auditoría interna (AUD-001)
+- [x] Informe de auditoría interna (AUD-002)
+- [x] Plan de acción correctiva (AUD-003)
+- [x] Acta de revisión por la dirección (AUD-004)
+- [x] Resumen ejecutivo y cierre del proyecto (AUD-000)
 
 ---
 
-**Versión del índice:** 2.0  
-**Última actualización:** 2 de junio de 2026
+## SEMANA 3 — IMPLEMENTACIÓN
+
+| Documento | Código | Descripción |
+|-----------|--------|-------------|
+| [Plan_Implementacion_2026.md](Semana3/Plan_Implementacion_2026.md) | IMPL-001 | Cronograma Q1–Q4 con hitos, responsables y costos |
+| [Registro_Implementacion_Controles.md](Semana3/Registro_Implementacion_Controles.md) | IMPL-002 | Evidencia de 20 controles ISO implementados y verificados |
+| [Plan_Capacitacion.md](Semana3/Plan_Capacitacion.md) | IMPL-003 | 6 módulos por audiencia, calendario y métricas |
+| [Registro_Capacitaciones.md](Semana3/Registro_Capacitaciones.md) | IMPL-004 | Registro de ejecución H1 2026, simulacro y campaña de phishing |
+| [Semana3_Resumen_Ejecutivo.md](Semana3/Semana3_Resumen_Ejecutivo.md) | IMPL-000 | Cierre H1 2026: KPIs, riesgos mitigados, presupuesto |
+
+---
+
+## SEMANA 4 — AUDITORÍA
+
+| Documento | Código | Descripción |
+|-----------|--------|-------------|
+| [AUD-001_Plan_Auditoria_Interna.md](Semana4/AUD-001_Plan_Auditoria_Interna.md) | AUD-001 | Alcance, criterios, metodología y cronograma (ISO 27001 §9.2) |
+| [AUD-002_Informe_Auditoria_Interna.md](Semana4/AUD-002_Informe_Auditoria_Interna.md) | AUD-002 | Hallazgos: 1 NC Mayor, 4 NC Menores, 6 observaciones |
+| [AUD-003_Plan_Accion_Correctiva.md](Semana4/AUD-003_Plan_Accion_Correctiva.md) | AUD-003 | Causa raíz y cierre de las 5 no conformidades (ISO 27001 §10.2) |
+| [AUD-004_Revision_por_la_Direccion.md](Semana4/AUD-004_Revision_por_la_Direccion.md) | AUD-004 | Acta de revisión por la dirección (ISO 27001 §9.3) |
+| [Semana4_Resumen_Ejecutivo.md](Semana4/Semana4_Resumen_Ejecutivo.md) | AUD-000 | Cierre del proyecto: certificación ISO 27001:2022 obtenida |
+
+---
+
+**Versión del índice:** 3.0  
+**Última actualización:** Diciembre 2026 — Proyecto completo (4 fases)
 
 ---
 

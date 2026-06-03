@@ -92,9 +92,11 @@ SGSI-Stamford-Health-SPA/
 | Fase | Estado | Entregables |
 |------|--------|-------------|
 | Semana 1 — Diagnóstico | ✅ Completo | Inventario activos, Matriz riesgos, Informe diagnóstico |
-| Semana 2 — Diseño SGSI | ✅ Completo | 6 políticas, 2 procedimientos, 6 formularios, estructura organizativa |
-| Semana 3 — Implementación | ⏳ Pendiente | Despliegue de controles técnicos |
-| Semana 4 — Auditoría | ⏳ Pendiente | Auditoría interna y externa ISO 27001 |
+| Semana 2 — Diseño SGSI | ✅ Completo | 9 políticas, 3 procedimientos, 7 formularios, estructura organizativa |
+| Semana 3 — Implementación | ✅ Completo | Plan e implementación de 20 controles, plan y registro de capacitación |
+| Semana 4 — Auditoría | ✅ Completo | Auditoría interna, acción correctiva, revisión por la dirección, certificación ISO 27001 |
+
+**Proyecto completo** — ciclo PDCA cerrado con certificación ISO/IEC 27001:2022 (escenario simulado, diciembre 2026).
 
 ---
 
