@@ -74,6 +74,12 @@
 | [FORM-006_Acceso_Medico_Externo.md](Formularios/FORM-006_Acceso_Medico_Externo.md) | FORM-006 | Alta de médicos externos con verificación Ley 20.584 |
 | [FORM-007_Registro_Incidente.md](Formularios/FORM-007_Registro_Incidente.md) | FORM-007 | Registro de incidente de seguridad con línea de tiempo |
 
+### Declaración de Aplicabilidad (Documento central ISO 27001)
+
+| Documento | Código | Descripción |
+|-----------|--------|-------------|
+| [Declaracion_Aplicabilidad_SoA.md](Declaracion_Aplicabilidad_SoA.md) | SOA-001 | Statement of Applicability — los 93 controles del Anexo A con estado, justificación y documento de soporte (ISO 27001 §6.1.3) |
+
 ### Mapeo de Controles ISO 27002:2022
 
 | Estado | Controles | Cantidad |
@@ -96,10 +102,11 @@
 | Políticas desarrolladas | 9 (PSI-001 a PSI-009) |
 | Procedimientos | 3 (PROC-003, PROC-004, PROC-005) |
 | Formularios | 7 (FORM-001 a FORM-007) |
-| Controles ISO 27002 implementados | 20 / 93 (21%) |
+| Controles ISO 27002 implementados (final certificado) | 85 / 93 (91%) — ver SOA-001 |
 | Exposición financiera inicial | $120M CLP/año |
-| Exposición proyectada con controles | $48M CLP/año (−60%) |
+| Exposición final con controles | $48M CLP/año (−60%) |
 | Presupuesto de implementación 2026 | $75M CLP |
+| Certificación ISO/IEC 27001:2022 | ✅ Obtenida (22/12/2026) |
 
 ---
 
@@ -108,7 +115,7 @@
 | Norma / Ley | Aplicación en el proyecto |
 |-------------|--------------------------|
 | ISO/IEC 27001:2022 | Marco del SGSI — estructura y requisitos |
-| ISO/IEC 27002:2022 | 93 controles evaluados, 20 implementados |
+| ISO/IEC 27002:2022 | 93 controles evaluados, 85 implementados (ver SOA-001) |
 | ISO 27799:2016 | Controles específicos para sector salud |
 | NIST Cybersecurity Framework | Marco de referencia complementario |
 | Ley 19.628 | Protección de datos personales — aplicada en PSI-002 §17, PSI-009 |

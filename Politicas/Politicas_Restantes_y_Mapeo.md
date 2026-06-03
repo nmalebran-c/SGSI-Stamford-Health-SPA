@@ -669,16 +669,23 @@ En lugar de USB, usar:
 
 ## RESUMEN DE IMPLEMENTACIÓN
 
-### ✅ Controles Implementados (15)
-5.1, 5.15, 5.16, 5.17, 5.18, 5.24, 5.25, 5.26, 5.29, 5.30, 6.3, 6.4, 8.1, 8.2, 8.3, 8.5, 8.10, 8.13
+> **Nota:** Este mapeo corresponde a la evaluación de **diseño (Semana 2)**. El estado **final certificado** de los 93 controles del Anexo A se encuentra documentado en la **Declaración de Aplicabilidad (SOA-001)**, que es el documento de referencia oficial.
 
-### ⚠️ Controles Parciales (11)
-5.7, 5.19, 5.20, 6.1, 6.2, 7.2, 7.4, 8.8, 8.9, 8.14, 8.23, 8.24
+### Estado al diseño (Semana 2 — noviembre 2025)
+- ✅ Implementados: 15 controles
+- ⚠️ Parciales: 12 controles
+- ❌ Pendientes: resto del Anexo A
 
-### ❌ Controles Pendientes (3)
-8.11, Política de Terceros específica, Política de Criptografía
+**Nivel de implementación al diseño:** ~30%
 
-**Nivel de Implementación:** 60% completo (objetivo Q2 2026: 90%)
+### Estado final certificado (diciembre 2026 — ver SOA-001)
+- ✅ Implementados: **85 controles** (91.4%)
+- ⚠️ Parciales / mejora continua 2027: **7 controles**
+- ⛔ No aplica (excluido con justificación): **1 control** (8.30 — desarrollo 100% interno)
+
+**Nivel de implementación final:** 91% → **Certificación ISO/IEC 27001:2022 obtenida (22/12/2026)**
+
+> El detalle control por control (los 93 del Anexo A) está en **[Declaracion_Aplicabilidad_SoA.md](../Declaracion_Aplicabilidad_SoA.md)**.
 
 ---
 

@@ -18,31 +18,52 @@ SGSI-Stamford-Health-SPA/
 │
 ├── Semana1/                          # Fase 1 — Diagnóstico Inicial
 │   ├── Informe_Diagnostico.md        # Informe completo de diagnóstico
-│   ├── Inventario_Activos.md         # 487 activos clasificados
-│   └── Matriz_Riesgos.md             # 20 riesgos evaluados, 8 prioritarios
+│   ├── Inventario_Activos.md         # 487 activos, 16 críticos
+│   └── Matriz_Riesgos.md             # 20 riesgos evaluados, 11 prioritarios
 │
 ├── Semana2/                          # Fase 2 — Diseño del SGSI
 │   ├── Estructura_Organizativa_SGSI.md   # Comité, roles y RACI
 │   └── Semana2_Resumen_Ejecutivo.md      # Resumen ejecutivo de la fase
 │
-├── Politicas/                        # Políticas de Seguridad
+├── Semana3/                          # Fase 3 — Implementación
+│   ├── Plan_Implementacion_2026.md         # IMPL-001
+│   ├── Registro_Implementacion_Controles.md# IMPL-002
+│   ├── Plan_Capacitacion.md                # IMPL-003
+│   ├── Registro_Capacitaciones.md          # IMPL-004
+│   └── Semana3_Resumen_Ejecutivo.md        # IMPL-000
+│
+├── Semana4/                          # Fase 4 — Auditoría
+│   ├── AUD-001_Plan_Auditoria_Interna.md
+│   ├── AUD-002_Informe_Auditoria_Interna.md
+│   ├── AUD-003_Plan_Accion_Correctiva.md
+│   ├── AUD-004_Revision_por_la_Direccion.md
+│   └── Semana4_Resumen_Ejecutivo.md        # AUD-000
+│
+├── Politicas/                        # Políticas de Seguridad (PSI-001 a PSI-009)
 │   ├── Politica_Seguridad_Informacion_Principal.md  # PSI-001
 │   ├── Politica_Control_Accesos.md                  # PSI-002 v1.1
 │   ├── Politica_Uso_Aceptable.md                    # PSI-003
-│   └── Politicas_Restantes_y_Mapeo.md               # PSI-004/005/006 + ISO map
+│   ├── Politicas_Restantes_y_Mapeo.md               # PSI-004/005/006 + ISO map
+│   ├── PSI-007_Gestion_Cambios.md                   # PSI-007
+│   ├── PSI-008_Criptografia.md                      # PSI-008
+│   └── PSI-009_Gestion_Proveedores.md               # PSI-009
 │
 ├── Procedimientos/                   # Procedimientos Operacionales
-│   ├── PROC-003_Gestion_Accesos.md              # Procedimiento de gestión de accesos
-│   └── PROC-005_Respuesta_Incidentes_Seguridad.md   # Respuesta a incidentes
+│   ├── PROC-003_Gestion_Accesos.md
+│   ├── PROC-004_Gestion_Vulnerabilidades.md
+│   └── PROC-005_Respuesta_Incidentes_Seguridad.md
 │
-├── Formularios/                      # Formularios del SGSI
+├── Formularios/                      # Formularios del SGSI (FORM-001 a FORM-007)
 │   ├── FORM-001_Solicitud_Acceso.md
 │   ├── FORM-002_Revision_Accesos.md
 │   ├── FORM-003_Acta_Devolucion_Activos.md
 │   ├── FORM-004_Excepcion_Politica.md
 │   ├── FORM-005_Registro_Cuentas_Servicio.md
-│   └── FORM-006_Acceso_Medico_Externo.md
+│   ├── FORM-006_Acceso_Medico_Externo.md
+│   └── FORM-007_Registro_Incidente.md
 │
+├── Declaracion_Aplicabilidad_SoA.md  # SOA-001 — Statement of Applicability (93 controles)
+├── Bibliografia.md                   # Referencias normativas (formato APA 7)
 ├── INDICE_COMPLETO_PROYECTO.md       # Índice general con estado de avance
 └── README.md
 ```
@@ -56,7 +77,7 @@ SGSI-Stamford-Health-SPA/
 | Documento | Descripción |
 |-----------|-------------|
 | [Informe de Diagnóstico](Semana1/Informe_Diagnostico.md) | Diagnóstico completo: empresa, activos, amenazas, vulnerabilidades y riesgos |
-| [Inventario de Activos](Semana1/Inventario_Activos.md) | 487 activos catalogados en 8 categorías, 13 activos críticos identificados |
+| [Inventario de Activos](Semana1/Inventario_Activos.md) | 487 activos catalogados en 8 categorías, 16 activos críticos identificados |
 | [Matriz de Riesgos](Semana1/Matriz_Riesgos.md) | 20 riesgos evaluados con metodología probabilidad × impacto, 8 prioritarios |
 
 ### Fase 2 — Diseño del SGSI
@@ -105,7 +126,7 @@ SGSI-Stamford-Health-SPA/
 - **Políticas desarrolladas:** 6 (PSI-001 a PSI-006)
 - **Procedimientos:** 2 (PROC-003, PROC-005)
 - **Formularios:** 6 (FORM-001 a FORM-006)
-- **Activos inventariados:** 487 (13 críticos)
+- **Activos inventariados:** 487 (16 críticos)
 - **Controles ISO 27002 evaluados:** 93
 - **Controles implementados:** 18 (19%) — objetivo Q2 2026: 90%
 - **Exposición al riesgo estimada:** $120M CLP/año → objetivo $48M CLP/año
