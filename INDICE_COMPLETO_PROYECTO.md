@@ -5,7 +5,7 @@
 
 **Proyecto:** Diseño, Implementación y Auditoría de un SGSI  
 **Asignatura:** Ciberseguridad Avanzada  
-**Equipo:** Miguel Carvajal, Cristóbal Aguirre, Emilio Maturana, Josué Bustos, Nicolás Malebrán  
+**Autor:** Nicolás Malebrán C.  
 **Docente:** Cristian Cubillos  
 **Institución:** Universidad de La Serena  
 **Periodo:** Noviembre 2025 — 2026

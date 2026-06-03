@@ -5,7 +5,7 @@
 ---
 
 **Fecha:** 22 de noviembre de 2025  
-**Equipo:** Miguel Carvajal, Cristóbal Aguirre, Emilio Maturana, Josué Bustos, Nicolás Malebrán  
+**Autor:** Nicolás Malebrán C.  
 **Docente:** Cristian Cubillos
 
 ---
